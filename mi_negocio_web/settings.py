@@ -41,6 +41,12 @@ INSTALLED_APPS = [
     "core",
     "tienda",
     "carrito",
+    "ordenes",
+    "crispy_forms",
+    "crispy_bootstrap4",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
 ]
 
 MIDDLEWARE = [
@@ -71,6 +77,18 @@ TEMPLATES = [
         },
     },
 ]
+
+#Django Authentication
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+ACCOUNT_EMAIL_VERIFICATRION = 'none',
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login',
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = "mi_negocio_web.wsgi.application"
 
@@ -136,4 +154,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 CARRITO_SESSION_ID = "carrito" #ID del carrito en la sesion del usuario
+#crispy form
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
